@@ -89,9 +89,40 @@ public class MySort {
 
     }
 
+    public static int[] heapSort(int[] array) {
+        create(array);
+        for (int i = 0; i <= array.length - 1; i++) {
+            swap(array,0,array.length-1-i);
+            shiftDown(array,array.length-1-i,0);
+        }
+        return array;
+    }
+
+    public static void create(int[] array) {
+        for (int i = (array.length - 1 - 1)/2; i >= 0; i--) {
+            shiftDown(array,array.length,i);
+        }
+    }
+    public static void shiftDown(int[] array,int size,int index) {
+        int parent = index;
+        int child = parent*2 + 1;
+        while (child < size) {
+            if (child + 1 < size && array[child + 1] > array[child]) {
+                child = child + 1;
+            }
+            if (array[parent] < array[child]) {
+                swap(array,parent,child);
+            }else {
+                break;
+            }
+            parent = child;
+            child = parent*2 + 1;
+        }
+    }
+
     public static void main(String[] args) {
         int[] array = new int[]{9,5,2,7,4,6,3,8,1};
-        int[] ret = quickSort(array);
+        int[] ret = heapSort(array);
         System.out.println(Arrays.toString(ret));
     }
 
