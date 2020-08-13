@@ -10,6 +10,43 @@ import java.util.List;
  * Time: 17:14
  */
 public class Demo3 {
+
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+
+        int countA = 0;
+        int countB = 0;
+        ListNode curA = headA;
+        ListNode curB = headB;
+        while (curA != null) {
+            countA++;
+            curA = curA.next;
+        }
+        while (curB != null) {
+            countB++;
+            curB = curB.next;
+        }
+        curA = headA;
+        curB = headB;
+        int len = countA - countB;
+        if (len < 0) {
+            curB = headA;
+            curA = headB;
+            len = countB- countA;
+        }
+        while (len > 0) {
+            curA = curA.next;
+            len--;
+        }
+        while (curA != curB) {
+            curA = curA.next;
+            curB = curB.next;
+        }
+        if (curA == curB && curA != null) {
+            return curA;
+        }
+        return null;
+
+    }
     public static ListNode deleteVal(ListNode head,int val) {
         ListNode newNode = new ListNode(-1);
         newNode.next = head;
