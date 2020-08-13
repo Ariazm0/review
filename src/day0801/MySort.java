@@ -91,7 +91,7 @@ public class MySort {
 
     public static int[] heapSort(int[] array) {
         create(array);
-        for (int i = 0; i <= array.length - 1; i++) {
+        for (int i = 0; i < array.length; i++) {
             swap(array,0,array.length-1-i);
             shiftDown(array,array.length-1-i,0);
         }
@@ -119,6 +119,23 @@ public class MySort {
             child = parent*2 + 1;
         }
     }
+
+    public static void mergeSort(int[] array) {
+        mergeSortHelper(array,0,array.length);
+    }
+    public static void mergeSortHelper(int[] array,int left,int right) {
+        if (right - left <= 1) {
+            return;
+        }
+        int index = (right + left)/2;
+        mergeSortHelper(array,left,index);
+        mergeSortHelper(array,index,right);
+        merge(array,left,index,right);
+    }
+    public static void merge(int[] array,int left,int mid,int right) {
+
+    }
+
 
     public static void main(String[] args) {
         int[] array = new int[]{9,5,2,7,4,6,3,8,1};
