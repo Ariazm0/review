@@ -11,6 +11,27 @@ import java.util.List;
  */
 public class Demo3 {
 
+
+    public int kthToLast(ListNode head, int k) {
+        if (head == null) {
+            return 0;
+        }
+        if (k <= 0) {
+            return 0;
+        }
+        ListNode node1 = head;
+        ListNode node2 = head;
+        while (k > 0) {
+            node1 = node1.next;
+            k--;
+        }
+        while (node1 != null && node2 != null) {
+            node1 = node1.next;
+            node2 = node2.next;
+        }
+        return node2.val;
+    }
+
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 
         int countA = 0;
