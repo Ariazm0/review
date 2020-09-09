@@ -11,6 +11,29 @@ import java.util.List;
  */
 public class Demo3 {
 
+    public ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode cur = head.next;
+        ListNode prev = head;
+        ListNode newHead = head;
+        while (cur != null) {
+            if (cur.next == null) {
+                newHead = cur;
+            }
+            ListNode curNext = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = curNext;
+        }
+        if (head.next != null) {
+            head.next = null;
+        }
+        return newHead;
+
+    }
+
 
     public int kthToLast(ListNode head, int k) {
         if (head == null) {
@@ -84,7 +107,8 @@ public class Demo3 {
     public static void main(String[] args) {
         Demo1 demo1 = new Demo1();
         ListNode root = demo1.build();
-        ListNode node = deleteVal(root,3);
+        Demo3 demo3 = new Demo3();
+        ListNode node = demo3.reverseList(root);
         System.out.println(node);
     }
 }
