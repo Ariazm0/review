@@ -2,6 +2,7 @@ package TreeTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,6 +27,12 @@ public class Demo1 {
     public List<Integer> preorderTraversal1(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         return result;
+
+
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
 
     }
 
