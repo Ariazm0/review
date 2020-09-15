@@ -45,6 +45,6 @@ public class Demo7 {
             String str = in.nextLine();
             String ret = findMax(str);
             System.out.println(ret);
-        }
+        }  
     }
 }
